@@ -6,7 +6,7 @@ from glob import glob
 from screens import MainScreen
 
 def builder_load():
-    # loads all files from /frontend, use join for run this code on win and unix
+    "loads all files from /frontend, use join for run this code on win and unix"
     for file in glob(join("frontend","*.kv")):
         Builder.load_file(file)
 
@@ -18,11 +18,11 @@ class BookApp(MDApp):
         self.setup_sm()
         
     def setup_theme(self):
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
          
     def setup_sm(self):
         self.sm = ScreenManager()
-        self.sm.add_widget(MainScreen(name='main'))
+        self.sm.add_widget(MainScreen()) # see names in screens.screens
          
     def build(self): # kivy requires a build function
         return self.sm
