@@ -1,4 +1,9 @@
 <MainScreen>
-    MDLabel:
-        text: "Hello, world!"
-        halign: "center"
+    MDScrollView:
+        size_hint_y: 0.75
+        pos_hint: { "center_x": .5, "center_y": .47 }
+        MDCard: # FIXME:
+            padding: sp(12)
+            size_hint_x: 0.8
+            MDLabel:
+                text: "We have too large text to test it \n" *8

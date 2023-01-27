@@ -5,6 +5,11 @@ from os.path import join
 from glob import glob
 from screens import MainScreen
 
+# TODO: make requirements.txt -> pip freeze
+
+from kivy.core.window import Window # ONLY FOR DEV
+Window.size = (300, 600)
+
 def builder_load():
     "loads all files from /frontend, use join for run this code on win and unix"
     for file in glob(join("frontend","*.kv")):
@@ -19,6 +24,7 @@ class BookApp(MDApp):
         
     def setup_theme(self):
         self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
+        self.theme_cls.primary_palette = "Indigo"
          
     def setup_sm(self):
         self.sm = ScreenManager()
