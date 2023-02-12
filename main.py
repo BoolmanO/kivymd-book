@@ -4,14 +4,15 @@ from kivy.uix.screenmanager import ScreenManager
 from os.path import join
 from glob import glob
 from screens import MainScreen
-
-# TODO: make requirements.txt -> pip freeze
+from frontend.widgets.widgets_py import *
 
 from kivy.core.window import Window # ONLY FOR DEV
 Window.size = (300, 600)
 
 def builder_load():
     "loads all files from /frontend, use join for run this code on win and unix"
+    for file in glob(join("frontend","widgets","*.kv")):
+        Builder.load_file(file)
     for file in glob(join("frontend","*.kv")):
         Builder.load_file(file)
 

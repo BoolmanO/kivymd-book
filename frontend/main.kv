@@ -1,9 +1,35 @@
 <MainScreen>
     MDScrollView:
-        size_hint_y: 0.75
-        pos_hint: { "center_x": .5, "center_y": .47 }
-        MDCard: # FIXME:
-            padding: sp(12)
-            size_hint_x: 0.8
-            MDLabel:
-                text: "We have too large text to test it \n" *8
+        size_hint_y: 1
+        do_scroll_x: False
+        do_scroll_y: True
+
+        MDGridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height # !REQUIRED
+            padding: ('10sp', '10sp', '10sp', '10sp')
+            spacing: '20sp'
+
+            M3Label:
+
+            M3Label:
+                text:  "hello \n"*8 +"hello"
+            M3Label:
+                text: "2hello"*23
+            M3Label:
+                text: "3hello"
+
+            M3Label:
+                text:  "hello"
+            M3Label:
+                text: "2hello"
+            M3Label:
+                text: "3hello"
+
+            M3Label:
+                text:  "hello"
+            M3Label:
+                text: "2hello"
+            M3Label:
+                text: "3hello"
