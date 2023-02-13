@@ -28,7 +28,7 @@ class BookApp(MDApp):
         
 
     def setup_theme(self) -> None:
-        self.theme_cls.theme_style = "Light" # TODO: make in future more themes
+        self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
         self.theme_cls.primary_palette = "Indigo"
          
     def setup_sm(self) -> None:
