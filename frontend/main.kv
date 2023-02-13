@@ -1,49 +1,44 @@
 <MainScreen>:
-    MDGridLayout:
-        rows:3
-        
-        MDTopAppBar:
-            #size: (app.window.size[0], app.window.size[1] / 10)
-            title: "KivyMDbook"
-            elevation: 0
-            #shadow_softness: 20 # FIXME
-            radius: sp(12), sp(12), 0, 0
-            pos_hint: {"top": 1}
-            left_action_items:
-                [['menu', lambda x: x]] # do simple switches for setting there
-                        
-        MDScreen:
-            MDScrollView:
-                size_hint_y: 1
-                do_scroll_x: False
-                do_scroll_y: True
 
-                MDGridLayout:
-                    cols: 1
-                    size_hint_y: None
-                    height: self.minimum_height # !REQUIRED
-                    padding: ('10sp', '20sp', '10sp', '10sp')
-                    spacing: sp(20)
+    MDBottomNavigation:
+        panel_color: app.theme_cls.primary_color
+        text_color_active: .8, .8, .8, 1
+        text_color_normal: .2, .2, .2, 1
+        selected_color_background: 0, 0, 0, 0
+        #size_hint_y: None # FIXME
+        #use_text: False
+        radius: sp(12), sp(12), 0, 0
 
-                    M3Label:
-                        text:"text ! # ! @ test ! @ # ! test @  @$ text !! tt !!"
-                    M3Label:
-                        text: "text![] "*1000
+        MDBottomNavigationItem:
+            name: "screen1"
+            icon: 'book'
+            MDLabel:
+                text: "123"
 
-        MDBottomNavigation:
-            panel_color: app.theme_cls.primary_color
-            text_color_active: .8, .8, .8, 1
-            text_color_normal: .2, .2, .2, 1
-            selected_color_background: 0, 0, 0, 0
-            size_hint_y: None # FIXME
-            use_text: False
-            radius: sp(12), sp(12), 0, 0
+        MDBottomNavigationItem:
+            icon: 'twitter'
+            name: "screen2"
+            
+            MDLabel:
+                text: "1234"
 
-            MDBottomNavigationItem:
-                icon: 'book'
+        MDBottomNavigationItem:
+            icon: 'cog'
+            name: "screen3"
+            MDScreen:
+                MDScrollView:
+                    size_hint_y: 1
+                    do_scroll_x: False
+                    do_scroll_y: True
 
-            MDBottomNavigationItem:
-                icon: 'twitter'
+                    MDGridLayout:
+                        cols: 1
+                        size_hint_y: None
+                        height: self.minimum_height # !REQUIRED
+                        padding: ('10sp', '20sp', '10sp', '10sp')
+                        spacing: sp(20)
 
-            MDBottomNavigationItem:
-                icon: 'cog'
+                        M3Label:
+                            text:"text ! # ! @ test ! @ # ! test @  @$ text !! tt !!"
+                        M3Label:
+                            text: "text![] "*1000
