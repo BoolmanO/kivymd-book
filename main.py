@@ -3,11 +3,12 @@ from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import ScreenManager
 from os.path import join
 from glob import glob
-from screens import MainScreen
+from screens import *
 from frontend.widgets.widgets_py import *
 
 from kivy.core.window import Window
 Window.size = (300, 600) # ONLY FOR DEV
+
 
 def builder_load() -> None:
     "loads all files from /frontend, use join for run this code on win and unix"
@@ -35,6 +36,7 @@ class BookApp(MDApp):
         self.sm = ScreenManager()
         self.sm.add_widget(MainScreen()) # see names in screens.screens
          
+
     def build(self) -> ScreenManager: # kivy requires a build function
         return self.sm
     

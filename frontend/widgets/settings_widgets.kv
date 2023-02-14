@@ -1,0 +1,20 @@
+<M3Switch@MDBoxLayout>
+    md_bg_color: 255,255,0
+    text: ""
+    pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+    MDCard:
+        md_bg_color: app.theme_cls.bg_dark
+        size_hint_y: m3label.size_hint_y
+        size: m3label.size
+        text: ""
+        pos: m3label.pos
+    
+        GridLayout:
+            cols: 2
+
+            M3Label:
+                id: m3label
+                text: root.text
+
+            MDSwitch:

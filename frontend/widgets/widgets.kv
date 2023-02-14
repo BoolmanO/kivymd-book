@@ -8,11 +8,31 @@
     shadow_color: 0, 0, 0, .9 
     # ripple_behavior: True not for this widget, but cool #TODO
     MDLabel:
-        padding: sp(5), sp(15)
+        padding: sp(15), sp(15)
         valign: "bottom"
         halign: "left"
-        font_size: sp(14)
+        font_size: sp(16)
         text: root.text
         id: m3label
         size: self.texture_size
         size_hint_y: None
+
+<M3TopAppBar@MDTopAppBar>
+    #size: (app.window.size[0], app.window.size[1] / 10)
+    title: "KivyMDbook"
+    elevation: 0
+    radius: sp(12), sp(12), 0, 0
+    pos_hint: {"top": 1}
+    left_action_items: [['menu', lambda x: x]] # do simple switches for setting there # TODO
+
+<M3ScrollView@MDScrollView>
+    size_hint_y: 1
+    do_scroll_x: False
+    do_scroll_y: True
+
+<M3LabelsColumn@MDGridLayout>
+    cols: 1
+    size_hint_y: None
+    height: self.minimum_height # !REQUIRED
+    padding: ('10sp', '20sp', '10sp', '10sp')
+    spacing: sp(20)
