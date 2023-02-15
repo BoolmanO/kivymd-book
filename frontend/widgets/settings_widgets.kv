@@ -1,0 +1,25 @@
+<M3Switch@GridLayout>
+    cols: 2
+    text: ""
+    default_active: False
+    active: m3switch.active
+    on_active: app.function()
+
+    M3Label:
+        id: m3label
+        text: root.text
+
+        AnchorLayout:
+            anchor_x: 'right'
+            size_hint_x: 0.5
+            padding: sp(40)
+            MDSwitch:
+                id: m3switch
+                icon_active: "check"
+                icon_inactive: "close"
+                icon_active_color: "white"
+                icon_inactive_color: "black"
+                active: root.active
+                on_active: root.on_active
+
+<M3Button>

@@ -1,0 +1,35 @@
+<SettingsScreen@MDScreen>
+    name: "settings_screen"
+
+    GridLayout:
+        rows:2
+
+        M3TopAppBar:
+
+        M3ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                height: self.minimum_height
+                size_hint_y: None
+                padding: sp(10)
+                spacing: sp(90)
+
+                #some widget #TODO
+                GridLayout:
+                    cols: 2
+                        
+                    M3Label:
+                        text: "dark theme"
+
+                    AnchorLayout:
+                        anchor_x: 'right'
+                        size_hint_x: 0.5
+                        padding: sp(40)
+
+                        MDSwitch:
+                            active: True
+                            icon_active: "check"
+                            icon_active_color: "white"
+                            icon_inactive: "close"
+                            icon_inactive_color: "black"
+                            on_active: app.change_theme(self.active)
