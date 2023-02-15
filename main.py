@@ -17,6 +17,15 @@ def builder_load() -> None:
     for file in glob(join("frontend","*.kv")):
         Builder.load_file(file)
 
+class FunctionWrapper:
+    def __init__(self, func, *args, **kwargs):
+        self.func = func
+        self.args = args
+        self.kwargs = kwargs
+
+    def do(self):
+        self.func(*self.args, **self.kwargs)
+
 class ColorManager:
     def change_theme(self, mode: bool):
         if mode:
@@ -25,6 +34,10 @@ class ColorManager:
             self.theme_cls.theme_style = "Light"
 
 class FunctionAnnotationInKv:
+
+    def func_wrap(self, func, *args, **kwargs):
+        return FunctionWrapper(func, *args, **kwargs)
+
     def function(self, *args, **kwargs):
         pass
 
