@@ -17,7 +17,19 @@ def builder_load() -> None:
     for file in glob(join("frontend","*.kv")):
         Builder.load_file(file)
 
-class BookApp(MDApp):
+class ColorManager:
+    def change_theme(self, mode: bool):
+        if mode:
+            self.theme_cls.theme_style = "Dark"
+        else:
+            self.theme_cls.theme_style = "Light"
+
+class FunctionAnnotationInKv:
+    def function(self, *args, **kwargs):
+        pass
+
+
+class BookApp(MDApp, ColorManager, FunctionAnnotationInKv):
     
     window = Window
 
@@ -26,6 +38,8 @@ class BookApp(MDApp):
         self.setup_theme() # If swapped it won't work
         self.setup_sm()
         self.theme_cls.material_style = "M3"
+        self.theme_cls.theme_style_switch_animation = True
+        self.theme_cls.theme_style_switch_animation_duration = 0.6
         
 
     def setup_theme(self) -> None:

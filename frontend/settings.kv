@@ -19,25 +19,17 @@
                     cols: 2
                         
                     M3Label:
-                        text: "text.."
+                        text: "dark theme"
 
                     AnchorLayout:
                         anchor_x: 'right'
                         size_hint_x: 0.5
                         padding: sp(40)
-                        MDSwitch:
-
-
-                GridLayout:
-                    cols: 2
-                        
-                    M3Label:
-                        text: "text.." *8
-                        id: m3label
-
-                    AnchorLayout: # FIXME
-                        anchor_x: 'right'
-                        size_hint_x: 0.5
-                        padding: sp(40)
 
                         MDSwitch:
+                            active: True
+                            icon_active: "check"
+                            icon_active_color: "white"
+                            icon_inactive: "close"
+                            icon_inactive_color: "black"
+                            on_active: app.change_theme(self.active)
