@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import ScreenManager
 from os.path import join
 from glob import glob
 from screens import *
-from frontend.widgets.widgets_py import *
 
 from kivy.core.window import Window
 Window.size = (300, 600) # ONLY FOR DEV
@@ -48,7 +47,7 @@ class ColorManager:
 
 
 class BookApp(MDApp, ColorManager, FunctionAnnotationInKv):
-    
+
     window = Window
 
     def __init__(self, *args, **kwargs):

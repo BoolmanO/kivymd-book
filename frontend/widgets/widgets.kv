@@ -1,21 +1,24 @@
+<M3TextLabel@MDLabel>
+    font_size: sp(16)
+    color: app.theme_cls.opposite_bg_darkest
+
 <M3Label@MDCard>: # FIXME SIZE OF CARD IS NOT DYNAMIC!
     md_bg_color: app.theme_cls.bg_darkest
     size_hint_y: m3label.size_hint_y
     size: m3label.size
     text: ""
+    style: "filled"
     pos: m3label.pos
     shadow_color: 0, 0, 0, 0
     # ripple_behavior: True not for this widget, but cool #TODO
-    MDLabel:
+    M3TextLabel:
         padding: sp(15), sp(15)
         valign: "bottom"
         halign: "left"
-        font_size: sp(16)
         text: root.text
         id: m3label
         size: self.texture_size
         size_hint_y: None
-        color: app.theme_cls.opposite_bg_darkest
 
 
 <M3TopAppBar@MDTopAppBar>

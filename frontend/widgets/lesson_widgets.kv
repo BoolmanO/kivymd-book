@@ -1,0 +1,23 @@
+<GoToLessonCard@MDCard>
+    md_bg_color: app.theme_cls.bg_darkest
+    size_hint_y: text_box.size_hint_y
+    size: text_box.size
+    text: ""
+    subtext: ""
+    go_to: ""
+    pos: text_box.pos
+    shadow_color: 0, 0, 0, 0
+    ripple_behavior: True #not for this widget, but cool #TODO
+    MDBoxLayout:
+        padding: sp(7), sp(7)
+        size_hint_y: None
+        spacing: sp(15)
+        id: text_box
+        orientation: "vertical"
+
+        M3TextLabel:
+            font_size: sp(24)
+            text: root.text
+        M3TextLabel:
+            font_size: sp(16)
+            text: root.subtext
