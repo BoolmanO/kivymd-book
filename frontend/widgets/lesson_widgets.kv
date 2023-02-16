@@ -4,20 +4,20 @@
     size: text_box.size
     text: ""
     subtext: ""
-    go_to: ""
+    go_to: app.function()
     pos: text_box.pos
     shadow_color: 0, 0, 0, 0
     ripple_behavior: True #not for this widget, but cool #TODO
-    MDBoxLayout:
+    on_touch_up: self.go_to
+    MDGridLayout:
+        rows: 2
         padding: sp(7), sp(7)
         size_hint_y: None
-        spacing: sp(15)
         id: text_box
-        orientation: "vertical"
+        M3TextLabel:
+            font_size: sp(20)
+            text: root.text
 
         M3TextLabel:
-            font_size: sp(24)
-            text: root.text
-        M3TextLabel:
-            font_size: sp(16)
+            font_size: sp(14)
             text: root.subtext
