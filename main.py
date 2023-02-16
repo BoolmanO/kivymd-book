@@ -14,10 +14,14 @@ def builder_load() -> None:
     "loads all files from /frontend, use join for run this code on win and unix"
     for file in glob(join("frontend","widgets","*.kv")):
         Builder.load_file(file)
+
     for file in glob(join("frontend","*.kv")):
         Builder.load_file(file)
 
+
 class FunctionWrapper:
+    '''This class is used to create a "delayed" function,
+    during initialization, the function itself and its arguments are passed'''
     def __init__(self, func, *args, **kwargs):
         self.func = func
         self.args = args
@@ -26,20 +30,21 @@ class FunctionWrapper:
     def do(self):
         self.func(*self.args, **self.kwargs)
 
+
+class FunctionAnnotationInKv:
+    def func_wrap(self, func, *args, **kwargs):
+        return FunctionWrapper(func, *args, **kwargs)
+
+    def function(self, *args, **kwargs):
+        pass
+
+
 class ColorManager:
     def change_theme(self, mode: bool):
         if mode:
             self.theme_cls.theme_style = "Dark"
         else:
             self.theme_cls.theme_style = "Light"
-
-class FunctionAnnotationInKv:
-
-    def func_wrap(self, func, *args, **kwargs):
-        return FunctionWrapper(func, *args, **kwargs)
-
-    def function(self, *args, **kwargs):
-        pass
 
 
 class BookApp(MDApp, ColorManager, FunctionAnnotationInKv):
@@ -58,6 +63,7 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv):
     def setup_theme(self) -> None:
         self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
         self.theme_cls.primary_palette = "Indigo"
+         
          
     def setup_sm(self) -> None:
         self.sm = ScreenManager()

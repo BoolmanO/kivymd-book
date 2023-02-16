@@ -4,7 +4,7 @@
     size: m3label.size
     text: ""
     pos: m3label.pos
-    shadow_color: 0, 0, 0, .9 
+    shadow_color: 0, 0, 0, 0
     # ripple_behavior: True not for this widget, but cool #TODO
     MDLabel:
         padding: sp(15), sp(15)
@@ -38,3 +38,13 @@
     height: self.minimum_height # !REQUIRED
     padding: ('10sp', '20sp', '10sp', '10sp')
     spacing: sp(20)
+
+<M3Button@AnchorLayout>
+    text: ""
+    anchor_x: "center"
+    anchor_y: "center"
+    MDRaisedButton:
+        text: root.text
+        font_size: sp(16)
+        elevation: 0
+        # text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!
