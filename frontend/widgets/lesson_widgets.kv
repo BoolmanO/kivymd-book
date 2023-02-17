@@ -8,12 +8,15 @@
     pos: text_box.pos
     shadow_color: 0, 0, 0, 0
     ripple_behavior: True #not for this widget, but cool #TODO
-    on_touch_up: self.go_to
+    on_touch_up: self.go_to.do()
+    source_to_img: app.path # TODO app.like.path and app.like.function
+
     MDGridLayout:
         rows: 2
         padding: sp(7), sp(7)
         size_hint_y: None
         id: text_box
+
         M3TextLabel:
             font_size: sp(20)
             text: root.text
@@ -27,5 +30,5 @@
         anchor_y: 'center'
         
         FitImage:
-            source: "frontend/images/template.png"
+            source: root.source_to_img
             #radius: 36, 36, 36, 36
