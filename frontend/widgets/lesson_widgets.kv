@@ -4,12 +4,12 @@
     size: text_box.size
     text: ""
     subtext: ""
-    go_to: app.function()
+    go_to: app.like.screen_name
     pos: text_box.pos
     shadow_color: 0, 0, 0, 0
     ripple_behavior: True #not for this widget, but cool #TODO
-    on_touch_up: self.go_to.do()
-    source_to_img: app.path # TODO app.like.path and app.like.function
+    on_touch_up: app.sm.current=self.go_to
+    source_to_img: app.like.path # TODO app.like.path and app.like.function
 
     MDGridLayout:
         rows: 2

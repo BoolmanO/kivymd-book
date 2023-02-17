@@ -13,6 +13,3 @@ class FunctionWrapper:
 class FunctionAnnotationInKv:
     def func_wrap(self, func, *args, **kwargs):
         return FunctionWrapper(func, *args, **kwargs)
-
-    def function(self, *args, **kwargs):
-        pass

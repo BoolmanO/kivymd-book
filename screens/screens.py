@@ -10,5 +10,11 @@ class BaseScreen(Screen):
         assert isinstance(self.name, str), "Name requires string"
         super().__init__(*args, **kwargs)
         
+
+class FirstSteps(BaseScreen):
+    name = "first_steps"
+
 class MainScreen(BaseScreen):
     name = "main_screen"
+
+all = (MainScreen, FirstSteps,)
