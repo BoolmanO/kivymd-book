@@ -11,7 +11,6 @@
     style: "filled"
     pos: m3label.pos
     shadow_color: 0, 0, 0, 0
-    # ripple_behavior: True not for this widget, but cool #TODO
 
     M3TextLabel:
         padding: sp(15), sp(15)
@@ -35,6 +34,7 @@
     size_hint_y: 1
     do_scroll_x: False
     do_scroll_y: True
+    bar_inactive_color: 0,0,0,0
 
 
 <M3LabelsColumn@MDGridLayout>
@@ -49,8 +49,11 @@
     text: ""
     anchor_x: "center"
     anchor_y: "center"
+
     MDRaisedButton:
         text: root.text
         font_size: sp(16)
+        text_shadow: 0
         elevation: 0
+        #shadow_color: 0,0,0,0
         # text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!

@@ -4,9 +4,10 @@
     GridLayout:
         rows:2
 
-        M3TopAppBar:
+        #M3TopAppBar:
 
         M3ScrollView:
+        
             MDBoxLayout:
                 orientation: 'vertical'
                 height: self.minimum_height
@@ -14,12 +15,8 @@
                 padding: sp(10)
                 spacing: sp(90)
 
-                #some widget #TODO
 
                 M3Switch:
                     default_active: True
                     event: app.change_theme
                     text: "dark theme"
-
-                M3Button:
-                    text: "commit changes"

@@ -4,3 +4,13 @@ class ColorManager:
             self.theme_cls.theme_style = "Dark"
         else:
             self.theme_cls.theme_style = "Light"
+
+    def get_icon_color(self):
+        pass
+
+    def get_inactive_icon_color(self):
+        if self.theme_cls.theme_style == "Light":
+            return (0.8, 0.8, 0.8, 1)
+        return (0.2, 0.2, 0.2, 1)
+
+    def get_active_icon_color(self): pass

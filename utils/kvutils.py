@@ -23,14 +23,10 @@ class PathObj:
     def __init__(self, path: Iterable):
         self.path=join(*path)
     
-    def ext(self, ext: FileExtension):
+    def ext(self, ext: FileExtension) -> str:
         return str(self.path+ext)
 
 
-class KvUtils:
+class KvPathUtils:
     def path_to(self, *args) -> PathObj:
         return PathObj(args)
-    
-    @property
-    def path(self):
-        return ""
