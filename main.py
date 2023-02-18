@@ -3,7 +3,7 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SwapTransition
 from screens import all
 from utils import *
-
+#from frontend.widgets.transition_backdrop import TransitionBackDrop
 from kivy.core.window import Window
 Window.size = (300, 600) # ONLY FOR DEV
 
@@ -27,7 +27,7 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
         
 
     def setup_theme(self) -> None:
-        self.theme_cls.theme_style = "Light" # TODO: make in future more themes
+        self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
         self.theme_cls.primary_palette = "Indigo"
          
          
@@ -41,4 +41,5 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
     
 if __name__ == '__main__':
     builder_load()
-    BookApp().run()
+    app = BookApp()
+    app.run()

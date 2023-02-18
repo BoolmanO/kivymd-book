@@ -2,3 +2,5 @@ __pycache__
 .vscode
 venv
 .dev.py
+problems.txt
+features.txt
