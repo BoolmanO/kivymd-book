@@ -49,11 +49,15 @@
     text: ""
     anchor_x: "center"
     anchor_y: "center"
+    event: app.like.function
 
     MDRaisedButton:
         text: root.text
         font_size: sp(16)
         text_shadow: 0
         elevation: 0
-        #shadow_color: 0,0,0,0
-        # text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!
+        shadow_color: 0,0,0,0
+        #radius: 16,16,16,16
+        rounded_button: True
+        on_release: root.event()
+        text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!

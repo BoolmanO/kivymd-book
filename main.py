@@ -3,7 +3,6 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SwapTransition
 from screens import all
 from utils import *
-#from frontend.widgets.transition_backdrop import TransitionBackDrop
 from kivy.core.window import Window
 Window.size = (300, 600) # ONLY FOR DEV
 
@@ -15,6 +14,19 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
     transition = SwapTransition
     transition_duration = 0.4
 
+    def set_transition(self, transition):
+        self.sm.transition = transition()
+        self.sm.screens[0].ids["nav"].transition = transition
+        self.transition = transition
+
+    @property
+    def get_transition_class(self):
+        return self.sm.transition.__class__
+    
+    @property
+    def get_transition(self):
+        return self.sm.transition
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs) # MDApp create self.theme_cls in __init__
         self.setup_theme() # If swapped it won't work
@@ -23,7 +35,7 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
             self.sm.add_widget(screen())
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style_switch_animation = True
-        self.theme_cls.theme_style_switch_animation_duration = 0.6
+        self.theme_cls.theme_style_switch_animation_duration = 0.4
         
 
     def setup_theme(self) -> None:
@@ -42,4 +54,5 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
 if __name__ == '__main__':
     builder_load()
     app = BookApp()
+    print(app.sm.screen_names)
     app.run()
