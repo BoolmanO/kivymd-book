@@ -1,0 +1,34 @@
+<MainScreen>:
+    
+    MDBottomNavigation:
+        id: nav
+        panel_color: app.theme_cls.primary_color
+        text_color_active: app.get_active_icon_color()
+        text_color_normal: app.get_inactive_icon_color()
+        transition: app.get_transition_class
+        transition_duration: app.transition_duration
+        #selected_color_background: 0, 0, 0, 0 # FIXME define colors for light theme
+        use_text: False
+        radius: sp(12), sp(12), 0, 0
+
+        MDBottomNavigationItem:
+            name: "screen1"
+            icon: 'book'
+            
+            LessonScreen:
+            
+
+        MDBottomNavigationItem:
+            icon: 'twitter'
+            name: "screen2"
+            
+            ExampleScreen:
+
+
+        MDBottomNavigationItem:
+            icon: 'cog'
+            name: "screen3"
+
+            SettingsScreen:
+
+                

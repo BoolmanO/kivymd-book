@@ -1,0 +1,34 @@
+<GoToLessonCard@MDCard>
+    md_bg_color: app.theme_cls.bg_darkest
+    size_hint_y: text_box.size_hint_y
+    size: text_box.size
+    text: ""
+    subtext: ""
+    go_to: app.like.screen_name
+    pos: text_box.pos
+    shadow_color: 0, 0, 0, 0
+    ripple_behavior: True #not for this widget, but cool #TODO
+    on_touch_up: app.sm.current=self.go_to
+    source_to_img: app.like.path # TODO app.like.path and app.like.function
+
+    MDGridLayout:
+        rows: 2
+        padding: sp(7), sp(7)
+        size_hint_y: None
+        id: text_box
+
+        M3TextLabel:
+            font_size: sp(20)
+            text: root.text
+
+        M3TextLabel:
+            font_size: sp(14)
+            text: root.subtext
+        
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: 'center'
+        
+        FitImage:
+            source: root.source_to_img
+            #radius: 36, 36, 36, 36

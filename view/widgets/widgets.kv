@@ -1,0 +1,63 @@
+<M3TextLabel@MDLabel>
+    font_size: sp(16)
+    color: app.theme_cls.opposite_bg_darkest
+
+
+<M3Label@MDCard>: # FIXME SIZE OF CARD IS NOT DYNAMIC!
+    md_bg_color: app.theme_cls.bg_darkest
+    size_hint_y: m3label.size_hint_y
+    size: m3label.size
+    text: ""
+    style: "filled"
+    pos: m3label.pos
+    shadow_color: 0, 0, 0, 0
+
+    M3TextLabel:
+        padding: sp(15), sp(15)
+        valign: "bottom"
+        halign: "left"
+        text: root.text
+        id: m3label
+        size: self.texture_size
+        size_hint_y: None
+
+
+<M3TopAppBar@MDTopAppBar>
+    #size: (app.window.size[0], app.window.size[1] / 10)
+    title: "KivyMDbook"
+    elevation: 0
+    pos_hint: {"top": 1}
+    left_action_items: [['menu', lambda x: x]] # TODO
+
+
+<M3ScrollView@MDScrollView>
+    size_hint_y: 1
+    do_scroll_x: False
+    do_scroll_y: True
+    bar_inactive_color: 0,0,0,0
+
+
+<M3LabelsColumn@MDGridLayout>
+    cols: 1
+    size_hint_y: None
+    height: self.minimum_height # !REQUIRED
+    padding: ('10sp', '20sp', '10sp', '10sp')
+    spacing: sp(20)
+
+
+<M3Button@AnchorLayout>
+    text: ""
+    anchor_x: "center"
+    anchor_y: "center"
+    event: app.like.function
+
+    MDRaisedButton:
+        text: root.text
+        font_size: sp(16)
+        text_shadow: 0
+        elevation: 0
+        shadow_color: 0,0,0,0
+        #radius: 16,16,16,16
+        rounded_button: True
+        on_release: root.event()
+        text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!
