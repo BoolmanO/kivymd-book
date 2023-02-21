@@ -3,7 +3,8 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SwapTransition
 
-from utils import FileExtension, KvPathUtils
+from py_screens import *
+from utils import FileExtension, KvPathUtils, builder_load
 from kv_annotations import FunctionAnnotationInKv, Like
 
 
@@ -11,7 +12,12 @@ from kivy.core.window import Window
 Window.size = (300, 600) # ONLY FOR DEV
 
 
-class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils):
+class temporary_plug:
+    def get_active_icon_color(self): return (0.4, 0.4, 0.4, 1)
+    def get_inactive_icon_color(self): return (0.2, 0.2, 0.2, 1)
+
+
+class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
 
     window = Window
     like = Like() # usage: app.like.function
@@ -42,7 +48,7 @@ class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils):
         self.setup_theme() # If swapped it won't work
         self.setup_sm()
 
-        for screen in all:
+        for screen in all_screens:
             self.sm.add_widget(screen())
 
         self.theme_cls.material_style = "M3"

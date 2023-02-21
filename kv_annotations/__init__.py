@@ -1,2 +1,2 @@
-from objects import Like
-from functions import FunctionAnnotationInKv
+from .objects import Like
+from .functions import FunctionAnnotationInKv

@@ -6,17 +6,13 @@ from kivy.uix.screenmanager import (SwapTransition, CardTransition,
 from kivymd.app import MDApp
 from kivy.metrics import sp
 from typing import Optional
-from utils import FunctionAnnotationInKv
-
-wrapper = FunctionAnnotationInKv()
 
 class BaseScreen(Screen):
-    "Thats like ABC class, but I don't want to load an extra module into the app"
     name: Optional[str] = None # follow snake_case
     
     def __init__(self, *args, **kwargs):
-        assert self.name != None, "Not implemented name"
-        assert isinstance(self.name, str), "Name requires string"
+        assert self.name != None, "Not implemented name" # FIXME: Production-build
+        assert isinstance(self.name, str), "Name requires string" # FIXME: Production-build
         super().__init__(*args, **kwargs)
         
 
@@ -106,4 +102,4 @@ class SettingsScreen(BaseScreen):
         self.transition_backdrop_caller.text = transition.__name__
         self.transition_backdrop_menu.dismiss()
 
-all = (MainScreen, SettingsScreen, FirstSteps,)
+all_screens = (MainScreen, SettingsScreen, FirstSteps,)
