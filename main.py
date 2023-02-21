@@ -1,18 +1,28 @@
 from kivymd.app import MDApp
+
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SwapTransition
-from screens import all
-from utils import *
+
+from utils import FileExtension, KvPathUtils
+from kv_annotations import FunctionAnnotationInKv, Like
+
+
 from kivy.core.window import Window
 Window.size = (300, 600) # ONLY FOR DEV
 
 
-class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
+class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils):
 
     window = Window
     like = Like() # usage: app.like.function
     transition = SwapTransition
     transition_duration = 0.4
+
+    def change_theme(self, mode: bool): # TODO FIXME: ASAP
+        if mode:
+            self.theme_cls.theme_style = "Dark"
+        else:
+            self.theme_cls.theme_style = "Light"
 
     def set_transition(self, transition):
         self.sm.transition = transition()
@@ -31,8 +41,10 @@ class BookApp(MDApp, ColorManager, FunctionAnnotationInKv, KvPathUtils):
         super().__init__(*args, **kwargs) # MDApp create self.theme_cls in __init__
         self.setup_theme() # If swapped it won't work
         self.setup_sm()
+
         for screen in all:
             self.sm.add_widget(screen())
+
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.theme_style_switch_animation_duration = 0.4

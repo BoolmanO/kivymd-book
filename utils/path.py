@@ -1,5 +1,4 @@
 from os.path import join
-from os import PathLike
 from typing import Iterable, Type
 from glob import glob
 from kivy.lang.builder import Builder
@@ -8,14 +7,17 @@ from kivy.lang.builder import Builder
 FileExtension = Type[str]
 
 def builder_load() -> None:
-    "loads all files from /frontend, use join for run this code on win and unix"
-    for file in glob(join("frontend","widgets","*.kv")):
+    "loads all files from view, use join for run this code on win and unix"
+    for file in glob(join("view","widgets","*.kv")):
         Builder.load_file(file)
 
-    for file in glob(join("frontend","*.kv")):
+    for file in glob(join("view","*.kv")):
         Builder.load_file(file)
 
-    for file in glob(join("frontend", "lessons", "*.kv")):
+    for file in glob(join("view", "screens", "lessons", "*.kv")):
+        Builder.load_file(file)
+
+    for file in glob(join("view", "screens", "bottom_nav_screens", "*.kv")):
         Builder.load_file(file)
 
 

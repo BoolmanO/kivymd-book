@@ -1,0 +1,1 @@
+# functionally describe the work with the color manager #TODO
