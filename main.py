@@ -14,7 +14,7 @@ Window.size = (300, 600) # ONLY FOR DEV
 
 class temporary_plug:
     def get_active_icon_color(self): return (0.4, 0.4, 0.4, 1)
-    def get_inactive_icon_color(self): return (0.2, 0.2, 0.2, 1)
+    def get_inactive_git_color(self): return (0.2, 0.2, 0.2, 1)
 
 
 class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
