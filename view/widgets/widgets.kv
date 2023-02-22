@@ -2,6 +2,10 @@
     font_size: sp(16)
     color: app.theme_cls.opposite_bg_darkest
     
+<M3Space@MDBoxLayout>:
+    orientation: "vertical"
+    size_hint_y: 0.05
+
 
 <M3Label@MDCard>:
     md_bg_color: app.theme_cls.bg_darkest
@@ -24,10 +28,11 @@
 
 <M3TopAppBar@MDTopAppBar>
     #size: (app.window.size[0], app.window.size[1] / 10)
+    anchor_title: "left"
     title: "KivyMDbook"
     elevation: 0
     pos_hint: {"top": 1}
-    left_action_items: [['menu', lambda x: x]] # TODO
+    left_action_items: [['subdirectory-arrow-left', app.switch_to_main]] # TODO
 
 
 <M3ScrollView@MDScrollView>

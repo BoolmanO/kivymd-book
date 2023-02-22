@@ -14,14 +14,16 @@ Window.size = (300, 600) # ONLY FOR DEV
 
 class temporary_plug:
     def get_active_icon_color(self): return (0.4, 0.4, 0.4, 1)
-    def get_inactive_git_color(self): return (0.2, 0.2, 0.2, 1)
+    def get_inactive_icon_color(self): return (0.2, 0.2, 0.2, 1)
+    def switch_to_main(self, icon):
+        self.sm.current="main_screen"
 
 
 class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
 
     window = Window
     like = Like() # usage: app.like.function
-    transition = SwapTransition
+    transition = SwapTransition # TODO create memory package # TODO Check kivymd transitions
     transition_duration = 0.4
 
     def change_theme(self, mode: bool): # TODO FIXME: ASAP
@@ -29,6 +31,12 @@ class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
             self.theme_cls.theme_style = "Dark"
         else:
             self.theme_cls.theme_style = "Light"
+
+    def change_theme_animation(self, mode: bool):
+        if mode:
+            self.theme_cls.theme_style_switch_animation = True
+        else:
+            self.theme_cls.theme_style_switch_animation = False
 
     def set_transition(self, transition):
         self.sm.transition = transition()

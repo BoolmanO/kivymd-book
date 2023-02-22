@@ -22,6 +22,9 @@ class FirstSteps(BaseScreen):
 class MainScreen(BaseScreen):
     name = "main_screen"
 
+class LessonMenu(BaseScreen):
+    name = "lesson_menu"
+
 class SettingsScreen(BaseScreen):
     name = "settings_screen"
     transitions = (SwapTransition, CardTransition, 
@@ -102,4 +105,4 @@ class SettingsScreen(BaseScreen):
         self.transition_backdrop_caller.text = transition.__name__
         self.transition_backdrop_menu.dismiss()
 
-all_screens = (MainScreen, SettingsScreen, FirstSteps,)
+all_screens = (MainScreen, SettingsScreen, LessonMenu, FirstSteps,)
