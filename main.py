@@ -4,7 +4,8 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SwapTransition
 
 from py_screens import *
-from utils import FileExtension, KvPathUtils, builder_load
+from utils import KvPathUtils, builder_load
+from utils.text_loader import text_manager
 from kv_annotations import FunctionAnnotationInKv, Like
 
 
@@ -22,6 +23,7 @@ class temporary_plug:
 class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
 
     window = Window
+    text_manager = text_manager
     like = Like() # usage: app.like.function
     transition = SwapTransition # TODO create memory package # TODO Check kivymd transitions
     transition_duration = 0.4
