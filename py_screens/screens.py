@@ -7,6 +7,8 @@ from kivymd.app import MDApp
 from kivy.metrics import sp
 from typing import Optional
 
+import webbrowser # just for testing it on mobile for experiment
+
 class BaseScreen(Screen):
     name: Optional[str] = None # follow snake_case
     
@@ -104,5 +106,8 @@ class SettingsScreen(BaseScreen):
         MDApp.get_running_app().set_transition(transition)
         self.transition_backdrop_caller.text = transition.__name__
         self.transition_backdrop_menu.dismiss()
+
+    def test_web(self): # TODO remove it
+        webbrowser.get().open("https://github.com/BoolmanO")
 
 all_screens = (MainScreen, SettingsScreen, LessonMenu, FirstSteps,)
