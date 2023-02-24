@@ -10,7 +10,7 @@ from kv_annotations import FunctionAnnotationInKv, Like
 
 
 from kivy.core.window import Window
-#Window.size = (300, 600) # ONLY FOR DEV
+#Window.size = (300, 600) # ONLY FOR DEVvv
 
 
 class temporary_plug:
