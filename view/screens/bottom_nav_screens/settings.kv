@@ -44,6 +44,12 @@
                     anchor_x: "center"
                     anchor_x: 'center'
 
-                    MDRaisedButton:
+                    M3Button:
                         text: "redirect to gh"
-                        on_release: root.test_web()
+                        event: root.test_web
+
+                M3Label:
+                    text: "Метаданные процесса"
+
+                M3Label:
+                    text: app.formatted_metadata

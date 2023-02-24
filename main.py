@@ -28,6 +28,10 @@ class BookApp(MDApp, temporary_plug):
     text_manager = text_manager
     like = kv_annotations.like # usage: app.like.function
     func_wrap = kv_annotations.func_wrap
+    metadata = utils.get_metadata()
+    formatted_metadata = ""
+    for key, value in metadata.items():
+        formatted_metadata += f"{key} - {value}\n"
 
     transition = SwapTransition # TODO create memory package # TODO Check kivymd transitions
     transition_duration = 0.4
