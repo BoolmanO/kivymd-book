@@ -7,9 +7,8 @@ class FunctionWrapper:
         self.kwargs = kwargs
 
     def do(self):
-        self.func(*self.args, **self.kwargs)
+        return self.func(*self.args, **self.kwargs)
 
 
-class FunctionAnnotationInKv:
-    def func_wrap(self, func, *args, **kwargs):
-        return FunctionWrapper(func, *args, **kwargs)
+def func_wrap(self, func, *args, **kwargs) -> FunctionWrapper:
+    return FunctionWrapper(func, *args, **kwargs)

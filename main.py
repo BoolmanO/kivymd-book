@@ -4,9 +4,10 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SwapTransition
 
 from py_screens import *
-from utils import KvPathUtils, builder_load
+import utils
+import kv_annotations
+from utils.path import FileExtension
 from utils.text_loader import text_manager
-from kv_annotations import FunctionAnnotationInKv, Like
 
 
 from kivy.core.window import Window
@@ -20,25 +21,19 @@ class temporary_plug:
         self.sm.current="main_screen"
 
 
-class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
+class BookApp(MDApp, temporary_plug):
 
     window = Window
+    path_to = utils.path_to
     text_manager = text_manager
-    like = Like() # usage: app.like.function
+    like = kv_annotations.like # usage: app.like.function
+    func_wrap = kv_annotations.func_wrap
+
     transition = SwapTransition # TODO create memory package # TODO Check kivymd transitions
     transition_duration = 0.4
 
-    def change_theme(self, mode: bool): # TODO FIXME: ASAP
-        if mode:
-            self.theme_cls.theme_style = "Dark"
-        else:
-            self.theme_cls.theme_style = "Light"
-
-    def change_theme_animation(self, mode: bool):
-        if mode:
-            self.theme_cls.theme_style_switch_animation = True
-        else:
-            self.theme_cls.theme_style_switch_animation = False
+    def path_to(self, *args, ext: FileExtension):
+        return utils.path_to(*args, ext=ext)
 
     def set_transition(self, transition):
         self.sm.transition = transition()
@@ -52,6 +47,20 @@ class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
     @property
     def get_transition(self):
         return self.sm.transition
+    
+
+    def change_theme(app: MDApp, mode: bool):
+        if mode:
+            app.theme_cls.theme_style = "Dark"
+        else:
+            app.theme_cls.theme_style = "Light"
+
+    def change_theme_animation(app: MDApp, mode: bool):
+        if mode:
+            app.theme_cls.theme_style_switch_animation = True
+        else:
+            app.theme_cls.theme_style_switch_animation = False
+            
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs) # MDApp create self.theme_cls in __init__
@@ -62,7 +71,7 @@ class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
             self.sm.add_widget(screen())
 
         self.theme_cls.material_style = "M3"
-        self.theme_cls.theme_style_switch_animation = True
+        self.theme_cls.theme_style_switch_animation = False
         self.theme_cls.theme_style_switch_animation_duration = 0.4
         
 
@@ -80,7 +89,7 @@ class BookApp(MDApp, FunctionAnnotationInKv, KvPathUtils, temporary_plug):
     
     
 if __name__ == '__main__':
-    builder_load()
+    utils.builder_load()
     app = BookApp()
     print(app.sm.screen_names)
     app.run()

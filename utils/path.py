@@ -1,5 +1,5 @@
 from os.path import join
-from typing import Iterable, Type
+from typing import Type
 from glob import glob
 from kivy.lang.builder import Builder
 
@@ -21,14 +21,5 @@ def builder_load() -> None:
         Builder.load_file(file)
 
 
-class PathObj:
-    def __init__(self, path: Iterable):
-        self.path=join(*path)
-    
-    def ext(self, ext: FileExtension) -> str:
-        return str(self.path+ext)
-
-
-class KvPathUtils:
-    def path_to(self, *args) -> PathObj:
-        return PathObj(args)
+def path_to(*args, ext: FileExtension) -> str:
+    return str(join(*args)+ext)
