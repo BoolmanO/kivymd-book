@@ -1,4 +1,4 @@
-from sys import platform, argv, version_info
+from sys import platform, version_info
 from os import name, getcwd
 from kivymd._version import __version__
 from kivy.config import version
@@ -7,7 +7,6 @@ from kivy.config import version
 def get_metadata():
     return {
         "platform": platform,
-        "argv": argv,
         "python": f"{version_info[0]}.{version_info[1]}.{version_info[2]}",
         "osname": name,
         "directory": getcwd(),
