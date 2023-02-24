@@ -8,13 +8,15 @@
 
 
 <M3Label@MDCard>:
-    md_bg_color: app.theme_cls.bg_darkest
+    #md_bg_color: app.theme_cls.bg_darkest
     size_hint_y: m3label.size_hint_y
     size: m3label.size
     text: ""
     style: "filled"
     pos: m3label.pos
-    shadow_color: 0, 0, 0, 0
+    elevation: 12
+    shadow_softness: 200
+    #shadow_color: 0, 0, 0, 0
 
     M3TextLabel:
         padding: sp(15), sp(15)
@@ -61,7 +63,7 @@
         font_size: sp(16)
         text_shadow: 0
         elevation: 0
-        shadow_color: 0,0,0,0
+        #shadow_color: 0,0,0,0
         #radius: 16,16,16,16
         rounded_button: True
         on_release: root.event()

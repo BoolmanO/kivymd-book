@@ -38,11 +38,6 @@ class SettingsScreen(BaseScreen):
         """ self.transtion_backdrop_caller = self.ids["transition_backdrop"]
         self.transition_backdrop_menu = MDDropdownMenu(items=self.transition_backdrop_items,
                                                        caller=self.transition_backdrop_caller) """
-    
-
-    def open_transition_backdrop(self):
-        self.transition_backdrop_caller = self.ids["transition_backdrop"]
-        self.transition_backdrop_items = []
         self.transition_backdrop_items = \
                 [
                     {
@@ -76,6 +71,9 @@ class SettingsScreen(BaseScreen):
                         "height": sp(56),
                     },
                 ]
+
+    def open_transition_backdrop(self):
+        self.transition_backdrop_caller = self.ids["transition_backdrop"]
         self.transition_backdrop_menu = MDDropdownMenu(items=self.transition_backdrop_items,
                                                        caller=self.transition_backdrop_caller,
                                                        width_mult=6,
