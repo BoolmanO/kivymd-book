@@ -7,6 +7,8 @@ path = Type[str]
 string = Type[str]
     
 screen_name = Type[str]
+
+boolean = Type[bool]
         
 bool_function = Type[Callable]
         

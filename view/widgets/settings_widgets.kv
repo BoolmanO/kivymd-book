@@ -3,19 +3,21 @@
     text: ""
     event: app.like.bool_function
     switch_active: app.func_wrap(self.event, m3switch.active)
-    default_active: True # FIXME
+    widget_default_active: True # FIXME
 
     M3Label:
         text: root.text
 
     AnchorLayout:
         anchor_x: 'right'
+        #anchor_y: 'center'
+        ##pos_hint_y: 0.5
         size_hint_x: 0.5
         padding: sp(40)
 
         MDSwitch:
             id: m3switch
-            active: root.default_active
+            active: root.widget_default_active
             icon_active: "check"
             icon_active_color: "white"
             icon_inactive: "close"
