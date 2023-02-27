@@ -40,6 +40,7 @@ class BookApp(MDApp, temporary_plug):
     def path_to(self, *args, ext: FileExtension):
         return utils.path_to(*args, ext=ext)
 
+
     def set_transition(self, transition):
         self.sm.transition = transition(duration=self.transition_duration)
         self.sm.screens[0].ids["nav"].transition = transition
