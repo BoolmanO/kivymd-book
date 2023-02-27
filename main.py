@@ -43,7 +43,7 @@ class BookApp(MDApp, temporary_plug):
     def set_transition(self, transition):
         self.sm.transition = transition(duration=self.transition_duration)
         self.sm.screens[0].ids["nav"].transition = transition
-        self.transition = transition##
+        self.transition = transition###
 
     def change_theme(app: MDApp, mode: bool):
         if mode:
