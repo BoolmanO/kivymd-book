@@ -33,25 +33,18 @@ class BookApp(MDApp, temporary_plug):
     for key, value in metadata.items():
         formatted_metadata += f"{key} - {value}\n"
 
-    transition = SwapTransition # TODO create memory package # TODO Check kivymd transitions
+    transition = SwapTransition
+    # TODO create memory package # TODO Check kivymd transitions
     transition_duration = 0.4
 
     def path_to(self, *args, ext: FileExtension):
         return utils.path_to(*args, ext=ext)
 
-    def set_transition(self, transition):
-        self.sm.transition = transition()
-        self.sm.screens[0].ids["nav"].transition = transition
-        self.transition = transition
 
-    @property
-    def get_transition_class(self):
-        return self.sm.transition.__class__
-    
-    @property
-    def get_transition(self):
-        return self.sm.transition
-    
+    def set_transition(self, transition):
+        self.sm.transition = transition(duration=self.transition_duration)
+        self.sm.screens[0].ids["nav"].transition = transition
+        self.transition = transition###
 
     def change_theme(app: MDApp, mode: bool):
         if mode:
