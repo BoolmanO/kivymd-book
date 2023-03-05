@@ -6,9 +6,8 @@
     orientation: "vertical"
     size_hint_y: 0.05
 
-<M3Label@MDLabel>
 
-<MD3Label@MDCard>
+<M3Label@MDCard>
     #md_bg_color: app.theme_cls.bg_darkest
     size_hint_y: m3label.size_hint_y
     size: m3label.size
@@ -38,7 +37,7 @@
     left_action_items: [['subdirectory-arrow-left', app.switch_to_main]] # TODO
 
 
-<M3ScrollView@MDScrollView>
+<M3ScrollView@MDRecycleView>
     size_hint_y: 1
     do_scroll_x: False
     do_scroll_y: True
