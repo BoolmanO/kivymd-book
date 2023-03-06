@@ -15,7 +15,7 @@
 
 
 <M3TopAppBar@MDTopAppBar>
-    #size: (app.window.size[0], app.window.size[1] / 10)
+    #size: (app.window.size[0], app.window.size[1] / 10+sp(20))
     anchor_title: "left"
     title: "KivyMDbook"
     elevation: 0
@@ -23,12 +23,17 @@
     left_action_items: [['subdirectory-arrow-left', app.switch_to_main]] # TODO
 
 
-<M3ScrollView@MDRecycleView>
+<M3RecycleView@MDRecycleView>
     size_hint_y: 1
     do_scroll_x: False
     do_scroll_y: True
     bar_inactive_color: 0,0,0,0
 
+<M3ScrollView@MDScrollView>
+    size_hint_y: 1
+    do_scroll_x: False
+    do_scroll_y: True
+    bar_inactive_color: 0,0,0,0
 
 <M3LabelsColumn@BoxLayout>
     orientation: 'vertical'

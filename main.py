@@ -17,17 +17,21 @@ from kivy.core.window import Window
 class BookApp(MDApp):
 
     window = Window
+
     path_to = utils.path_to
+    func_wrap = kv_annotations.func_wrap
+
     text_manager = text_manager
     like = kv_annotations.like # usage: app.like.function
-    func_wrap = kv_annotations.func_wrap
+
     metadata = utils.get_metadata()
     formatted_metadata = ""
     for key, value in metadata.items():
         formatted_metadata += f"{key} - {value}\n"
 
+    no_transition = NoTransition
     transition = NoTransition
-    transition_duration = 0
+    transition_duration = 0.4
 
     def path_to(self, *args, ext: FileExtension):
         return utils.path_to(*args, ext=ext)
@@ -52,7 +56,7 @@ class BookApp(MDApp):
 
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style_switch_animation = False
-        
+        self.theme_cls.colors["Light"]["Background"] = "#ebebeb"
 
     def setup_theme(self) -> None:
         self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
