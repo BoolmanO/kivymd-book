@@ -12,6 +12,7 @@ def builder_load() -> None:
         Builder.load_file(file)
 
     Builder.load_file(join("view", "widgets", "listitem", "listitem.kv"))
+    Builder.load_file(join("view", "widgets", "gotocard", "gotocard.kv"))
 
     for file in glob(join("view","*.kv")):
         Builder.load_file(file)

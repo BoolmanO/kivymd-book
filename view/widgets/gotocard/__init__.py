@@ -1,0 +1,1 @@
+from .gotocard import GoToLessonCard2
