@@ -1,28 +1,24 @@
 <GoToLessonCard@MDCard>
     #md_bg_color: app.theme_cls.bg_darkest
-    size_hint_y: text_box.size_hint_y
-    #size: text_box.size[0]+sp(5), text_box.size[1]+sp(5)
+    size_hint_y: None   
+    size: sp(300), sp(125)
+
     text: ""
     subtext: ""
     go_to: app.like.screen_name
-    pos: text_box.pos
     ripple_behavior: True
     on_touch_up: app.sm.current=self.go_to
 
-    MDBoxLayout:
-        spacing: sp(15)
-        orientation: "vertical"
-        padding: sp(7), sp(7)
-        size_hint_y: None
-        id: text_box
+    orientation: 'vertical'
+    #spacing: sp(15)
+    padding: sp(12), sp(12)
 
-        M3TextLabel:
-            font_size: sp(16)
-            text: root.text
+    M3TextLabel:
+        id: header
+        font_size: sp(16)
+        text: root.text
 
-        AnchorLayout:
-            anchor_y: 'top'
-
-            M3TextLabel:
-                font_size: sp(12)
-                text: root.subtext
+    M3TextLabel:
+        id: subtext
+        font_size: sp(12)
+        text: root.subtext

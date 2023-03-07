@@ -1,0 +1,13 @@
+<BaseListItemWithSwitch>
+    divider: None
+    on_size: self.ids._right_container.height = sp(64)
+    _no_ripple_effect: True
+    event: app.like.bool_function
+
+    RightSwitchContainer:
+        icon_active: "check"
+        icon_active_color: "white"
+        icon_inactive: "close"
+        icon_inactive_color: "black"
+        on_active: root.event(self.active)
+        #id: _right_container

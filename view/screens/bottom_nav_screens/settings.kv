@@ -16,10 +16,14 @@
                 spacing: sp(60)
 
 
-                M3Switch:
-                    widget_default_active: True
-                    event: app.change_theme
+                #M3Switch:
+                    #widget_default_active: True
+                    #event: app.change_theme
+                    #text: "dark theme"
+                TwoLineItemWithSwitch:
                     text: "dark theme"
+                    secondary_text: "change theme in this app"
+                    event: app.change_theme
 
                 MDSeparator:
                 

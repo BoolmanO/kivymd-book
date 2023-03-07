@@ -8,10 +8,10 @@ import utils
 import kv_annotations
 from utils.path import FileExtension
 from utils.text_loader import text_manager
-
+from view.widgets.listitem import *
 
 from kivy.core.window import Window
-#Window.size = (300, 600) # ONLY FOR DEVvv
+#Window.size = (300, 600)
 
 
 class BookApp(MDApp):
@@ -73,6 +73,8 @@ class BookApp(MDApp):
     
 if __name__ == '__main__':
     utils.builder_load()
+
     app = BookApp()
+    #app.load_all_kv_files(".view")
     #print(app.sm.screen_names)
     app.run()

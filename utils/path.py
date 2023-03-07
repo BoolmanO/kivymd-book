@@ -11,6 +11,8 @@ def builder_load() -> None:
     for file in glob(join("view","widgets","*.kv")):
         Builder.load_file(file)
 
+    Builder.load_file(join("view", "widgets", "listitem", "listitem.kv"))
+
     for file in glob(join("view","*.kv")):
         Builder.load_file(file)
 
