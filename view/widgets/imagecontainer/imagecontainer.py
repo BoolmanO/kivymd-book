@@ -1,0 +1,1 @@
+from kivymd.uix.fitimage import FitImage
