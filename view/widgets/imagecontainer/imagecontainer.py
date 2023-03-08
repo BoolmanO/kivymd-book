@@ -2,7 +2,7 @@ from kivymd.uix.fitimage import FitImage
 from kivy.uix.image import Image
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.scatter import Scatter
-from kivy.uix.anchorlayout import AnchorLayout
+from kivy.graphics import Color
 
 
 class ScatterImage(Scatter):
@@ -10,9 +10,11 @@ class ScatterImage(Scatter):
         super().__init__()
         self.size_hint_y = None
         self.size = img_obj.size
-        self.pos_hint = {"center_x":0.5, "center_y": 0.5}
+        #self.pos_hint = {"center_x":0.5, "center_y": 0.5}
         self.do_rotation = False
+        #self.do_translation = False
         self.add_widget(img_obj)
+        # scale max and scale min TODO:
         
 
 class ZoomingImage(Image):
@@ -20,17 +22,16 @@ class ZoomingImage(Image):
     def show_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
-                title="Image",
                 type="custom",
+                size=self.texture_size,
                 content_cls=ScatterImage(
-                Image(
-                        size=list(map(lambda x: x/2, self.size)), 
-                        source=self.source, 
-                        size_hint_y=None
+                    Image(
+                            size=list(map(lambda x: x/2, self.size)), 
+                            source=self.source, 
+                            size_hint_y=None,
+                            pos_hint = {"center_x":0.5, "center_y": 0.5}
+                        )
                     )
-                ),
-                buttons=[],
-                size=self.texture_size
-            )
+                )
 
         self.dialog.open()
