@@ -83,5 +83,5 @@ class BookApp(MDApp):
 if __name__ == '__main__':
     utils.builder_load()
     app = BookApp()
-    print(app.sm.screen_names)
+    #print(app.sm.screen_names)
     app.run()
