@@ -85,8 +85,97 @@ class BookApp(MDApp, temporary_plug):
         return self.sm
     
     
-if __name__ == '__main__':
-    utils.builder_load()
-    app = BookApp()
-    print(app.sm.screen_names)
-    app.run()
+#if __name__ == '__main__':
+    #utils.builder_load()
+    #app = BookApp()
+    #print(app.sm.screen_names)
+    #app.run()
+
+
+from kivymd.app import MDApp
+from kivy.app import Builder
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.card import MDCard
+from kivy.properties import StringProperty
+WIDGET = """
+<MD3Label>
+    size_hint_y: m3label.size_hint_y
+    size: m3label.size
+    #text: ""
+    #style: "filled"
+    pos: m3label.pos
+    elevation: 4
+    shadow_softness: 14
+    shadow_color: 0, 0, 0, 0.65
+
+    MDLabel:
+        padding: sp(15), sp(15)
+        valign: "bottom"
+        halign: "left"
+        text: root.text
+        id: m3label
+        size: self.texture_size
+"""
+from kivy.lang import Builder
+from kivy.properties import StringProperty
+
+from kivymd.app import MDApp
+from kivymd.uix.card import MDCard
+
+KV = '''
+<MD3Card>
+    padding: 4
+    size_hint: None, None
+    size: "200dp", "100dp"
+
+    MDRelativeLayout:
+
+        MDIconButton:
+            icon: "dots-vertical"
+            pos_hint: {"top": 1, "right": 1}
+
+        MDLabel:
+            id: label
+            text: root.text
+            adaptive_size: True
+            color: "grey"
+            pos: "12dp", "12dp"
+            bold: True
+
+
+MDScreen:
+    MDRecycleView:
+        MDBoxLayout:
+            orientation: "vertical"
+            id: box
+            adaptive_size: True
+            spacing: "56dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+'''
+
+
+class MD3Card(MDCard):
+    '''Implements a material design v3 card.'''
+
+    text = StringProperty()
+
+
+class Example(MDApp):
+    def build(self):
+        self.theme_cls.material_style = "M3"
+        Builder.load_string(WIDGET)
+
+        return Builder.load_string(KV)
+
+    def on_start(self):
+        styles = {
+            "elevated": "#f6eeee", "filled": "#f4dedc", "outlined": "#f8f5f4"
+        }
+        for i in range(20):
+            for style in styles.keys():
+                self.root.ids.box.add_widget(
+                    MD3Card(text="text"*10)
+                )
+
+
+Example().run()
