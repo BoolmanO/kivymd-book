@@ -10,6 +10,7 @@ from utils.path import FileExtension
 from utils.text_loader import text_manager
 from view.widgets.listitem import *
 from view.widgets.gotocard import *
+from view.widgets.imagecontainer import *
 
 from kivy.core.window import Window
 #Window.size = (300, 600)
