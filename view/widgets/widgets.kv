@@ -7,25 +7,21 @@
     size_hint_y: 0.05
 
 
-<M3Label@MDCard>
-    #md_bg_color: app.theme_cls.bg_darkest
-    size_hint_y: m3label.size_hint_y
-    size: m3label.size
+<M3Label@MDBoxLayout>
+    size_hint_y: m3label.size_hint_y #!REQUIRED
+    size: m3label.size #!REQUIRED
     text: ""
-    #style: "filled"
-    pos: m3label.pos
-    elevation: 4
-    shadow_softness: 14
-    shadow_color: 0, 0, 0, 0.65
+    #pos: m3label.pos
+
 
     MDLabel:
-        padding: sp(15), sp(15)
-        valign: "bottom"
-        halign: "left"
+        #padding: sp(15), sp(15)
+        #valign: "bottom"
+        #halign: "left"
         text: root.text
         id: m3label
-        size: self.texture_size
-        size_hint_y: None
+        size: self.texture_size #!REQUIRED
+        size_hint_y: None #!REQUIRED
 
 
 <M3TopAppBar@MDTopAppBar>
@@ -44,11 +40,11 @@
     bar_inactive_color: 0,0,0,0
 
 
-<M3LabelsColumn@MDGridLayout>
-    cols: 1
+<M3LabelsColumn@BoxLayout>
+    orientation: 'vertical'
     size_hint_y: None
     height: self.minimum_height # !REQUIRED
-    padding: ('10sp', '20sp', '10sp', '10sp')
+    padding: ('12sp', '12sp', '12sp', '12sp')
     spacing: sp(20)
 
 <M3Button@AnchorLayout>
