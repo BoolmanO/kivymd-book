@@ -1,4 +1,17 @@
 <ZoomingImageScreen>
+
+    BoxLayout:
+        orientation:'vertical'
+        pos_hint: {"x": 0.5, "y": 0.5}
+        ScatterImage:
+            size_hint: None,None
+            Image:
+                #size: self.get_norm_image_size()
+                texture_size: 5,0
+                size_hint: None,None
+                source: root.get_img_source()
+            
+
     ZoomingImageScreenAppBar:
         md_bg_color: app.theme_cls.bg_light
         left_action_items: [["subdirectory-arrow-left", root.back_to_root_screen]]

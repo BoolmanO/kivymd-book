@@ -1,28 +1,39 @@
 from __future__ import annotations
-
 import os
 
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.toolbar import MDTopAppBar
 from kivymd.app import MDApp
+
 from kivy.uix.image import Image
 from kivy.properties import StringProperty
+from kivy.uix.scatter import Scatter
 
 from py_screens import BaseScreen
 
 
+class ZoomingImageScreenAppBar(MDTopAppBar):
+    pass
+
+
+class ScatterImage(Scatter):
+    do_rotation=False
+    size_hint_y=None
+    source=StringProperty()
+
+
 class ZoomingImageScreen(MDScreen):
     def __init__(self, image_obj: ZoomingImage):
-        super().__init__()
         self.image_obj = image_obj
         self.name=f"{image_obj.name}_screen"
+        super().__init__()
+
+    def get_img_source(self):
+        return self.image_obj.source
 
     def back_to_root_screen(self, touch):
         self.image_obj.back_to_root_screen()
 
-
-class ZoomingImageScreenAppBar(MDTopAppBar):
-    pass
 
 class ZoomingImage(Image):
     source=StringProperty()
