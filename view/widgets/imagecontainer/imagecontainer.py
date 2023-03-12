@@ -22,7 +22,7 @@ class ZoomingImage(Image):
     dialog = None
 
     def close_dialog(self, *args):
-        print(args)
+
         if self.dialog:
             self.dialog.dismiss(force=True)
 
@@ -40,7 +40,7 @@ class ZoomingImage(Image):
                     ],
                 content_cls=ScatterImage(
                     FitImage(
-                            size=(500, 500),#list(map(lambda x: x/1.3, self.size)), 
+                            size=self.size, 
                             source=self.source, 
                             size_hint_y=None,
                             pos_hint = {"center_x":0.5, "center_y": 0.5}
