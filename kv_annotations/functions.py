@@ -1,3 +1,6 @@
+from typing import Callable
+
+
 class FunctionWrapper:
     '''This class is used to create a "delayed" function,
     during initialization, the function itself and its arguments are passed'''
@@ -10,5 +13,5 @@ class FunctionWrapper:
         return self.func(*self.args, **self.kwargs)
 
 
-def func_wrap(self, func, *args, **kwargs) -> FunctionWrapper:
+def func_wrap(self, func: Callable, *args, **kwargs) -> FunctionWrapper:
     return FunctionWrapper(func, *args, **kwargs)
