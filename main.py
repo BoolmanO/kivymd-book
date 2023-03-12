@@ -8,9 +8,8 @@ import utils
 import kv_annotations
 from utils.path import FileExtension
 from utils.text_loader import text_manager
-from view.widgets.listitem import *
-from view.widgets.gotocard import *
-from view.widgets.imagecontainer import *
+
+from view import *
 
 from kivy.core.window import Window
 #Window.size = (300, 600)
@@ -20,7 +19,7 @@ class BookApp(MDApp):
 
     window = Window
 
-    path_to = utils.path_to
+    path_to = utils.path_to # TODO refactoring
     func_wrap = kv_annotations.func_wrap
 
     text_manager = text_manager

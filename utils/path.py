@@ -6,7 +6,7 @@ from kivy.lang.builder import Builder
 
 FileExtension = Type[str]
 
-def builder_load() -> None:
+def builder_load() -> None: # TODO refactoring
     "loads all files from view, use join for run this code on win and unix"
     for file in glob(join("view","widgets","*.kv")):
         Builder.load_file(file)
