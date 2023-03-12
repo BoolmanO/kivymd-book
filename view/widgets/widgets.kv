@@ -7,21 +7,11 @@
     size_hint_y: 0.05
 
 
-<M3Label@MDBoxLayout>
-    size_hint_y: m3label.size_hint_y #!REQUIRED
-    size: m3label.size #!REQUIRED
+<M3Label@MDLabel>
     text: ""
-    #pos: m3label.pos
-
-
-    MDLabel:
-        #padding: sp(15), sp(15)
-        #valign: "bottom"
-        #halign: "left"
-        text: root.text
-        id: m3label
-        size: self.texture_size #!REQUIRED
-        size_hint_y: None #!REQUIRED
+    id: m3label
+    size: self.texture_size #!REQUIRED
+    size_hint_y: None #!REQUIRED
 
 
 <M3TopAppBar@MDTopAppBar>
@@ -33,7 +23,7 @@
     left_action_items: [['subdirectory-arrow-left', app.switch_to_main]] # TODO
 
 
-<M3ScrollView@MDScrollView>
+<M3ScrollView@MDRecycleView>
     size_hint_y: 1
     do_scroll_x: False
     do_scroll_y: True
@@ -47,16 +37,8 @@
     padding: ('12sp', '12sp', '12sp', '12sp')
     spacing: sp(20)
 
-<M3Button@AnchorLayout>
-    text: ""
-    anchor_x: "center"
-    anchor_y: "center"
-    event: app.like.function
-
-    MDRaisedButton:
-        text: root.text
-        font_size: sp(16)
-        elevation: 0
-        rounded_button: True
-        on_release: root.event()
-        text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!
+<M3Button@MDRaisedButton>
+    font_size: sp(16)
+    elevation: 0
+    rounded_button: True
+    #text_color: app.theme_cls.opposite_bg_darkest # TODO SOLVE PROBLEMS WITH THEMES!!!

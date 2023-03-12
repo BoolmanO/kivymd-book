@@ -1,7 +1,7 @@
 from kivymd.app import MDApp
 
 from kivy.uix.screenmanager import ScreenManager
-from kivy.uix.screenmanager import SwapTransition
+from kivy.uix.screenmanager import SwapTransition, NoTransition
 
 from py_screens import *
 import utils
@@ -26,9 +26,8 @@ class BookApp(MDApp):
     for key, value in metadata.items():
         formatted_metadata += f"{key} - {value}\n"
 
-    transition = SwapTransition
-    # TODO create memory package
-    transition_duration = 0.4
+    transition = NoTransition
+    transition_duration = 0
 
     def path_to(self, *args, ext: FileExtension):
         return utils.path_to(*args, ext=ext)
@@ -36,22 +35,11 @@ class BookApp(MDApp):
     def switch_to_main(self, icon):
         self.sm.current="main_screen"
 
-    def set_transition(self, transition):
-        self.sm.transition = transition(duration=self.transition_duration)
-        self.sm.screens[0].ids["nav"].transition = transition
-        self.transition = transition###
-
     def change_theme(app: MDApp, mode: bool):
         if mode:
             app.theme_cls.theme_style = "Dark"
         else:
             app.theme_cls.theme_style = "Light"
-
-    def change_theme_animation(app: MDApp, mode: bool):
-        if mode:
-            app.theme_cls.theme_style_switch_animation = True
-        else:
-            app.theme_cls.theme_style_switch_animation = False
             
 
     def __init__(self, *args, **kwargs):
@@ -64,7 +52,6 @@ class BookApp(MDApp):
 
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style_switch_animation = False
-        self.theme_cls.theme_style_switch_animation_duration = 0.4
         
 
     def setup_theme(self) -> None:

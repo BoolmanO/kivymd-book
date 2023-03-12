@@ -21,32 +21,11 @@
                     event: app.change_theme
                     text: "dark theme"
 
-                M3Switch:
-                    widget_default_active: True
-                    event: app.change_theme_animation
-                    text: "theme change animation"
-
-                M3Space:
-
-                MDSeparator:
-
-                AnchorLayout:
-                    anchor_x: "center"
-
-                    MDDropDownItem:
-                        text: "transitions"
-                        id: transition_backdrop
-                        on_release: root.open_transition_backdrop()
-                
                 MDSeparator:
                 
                 AnchorLayout:
                     anchor_x: "center"
                     anchor_x: 'center'
-
-                    M3Button:
-                        text: "redirect to github"
-                        event: root.test_web
 
                 M3Label:
                     text: f"Метаданные процесса:\n{app.formatted_metadata}"
