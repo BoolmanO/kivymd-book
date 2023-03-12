@@ -12,6 +12,8 @@ from view import *
 from kivy.core.window import Window
 #Window.size = (300, 600)
 
+
+# TODO add transitions.
 # TODO fix elevation of ZoomingImageScreenAppBar
 # TODO icons, add light theme support, outlined / filled
 class BookApp(MDApp):
@@ -30,6 +32,19 @@ class BookApp(MDApp):
     transition_duration = 0.4
 
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs) # MDApp create self.theme_cls in __init__
+        self.setup_theme() # If swapped it won't work
+        self.setup_sm()
+
+        for screen in all_screens:
+            self.sm.add_widget(screen())
+
+        self.theme_cls.material_style = "M3"
+        self.theme_cls.theme_style_switch_animation = False
+        self.theme_cls.colors["Light"]["Background"] = "#ebebeb"
+
+
     """Micro functions"""
     def path_to(self, *args, ext: utils.FileExtension):
         return utils.path_to(*args, ext=ext)
@@ -45,20 +60,9 @@ class BookApp(MDApp):
             app.theme_cls.theme_style = "Dark"
         else:
             app.theme_cls.theme_style = "Light"
-            
+
+
     """Functions for build"""
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs) # MDApp create self.theme_cls in __init__
-        self.setup_theme() # If swapped it won't work
-        self.setup_sm()
-
-        for screen in all_screens:
-            self.sm.add_widget(screen())
-
-        self.theme_cls.material_style = "M3"
-        self.theme_cls.theme_style_switch_animation = False
-        self.theme_cls.colors["Light"]["Background"] = "#ebebeb"
-
     def setup_theme(self) -> None:
         self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
         self.theme_cls.primary_palette = "Indigo"
