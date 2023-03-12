@@ -25,8 +25,8 @@ class ZoomingImage(Image):
                 type="custom",
                 size=self.texture_size,
                 content_cls=ScatterImage(
-                    Image(
-                            size=list(map(lambda x: x/2, self.size)), 
+                    FitImage(
+                            size=(500, 500),#list(map(lambda x: x/1.3, self.size)), 
                             source=self.source, 
                             size_hint_y=None,
                             pos_hint = {"center_x":0.5, "center_y": 0.5}
