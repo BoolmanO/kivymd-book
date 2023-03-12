@@ -1,17 +1,24 @@
 <ZoomingImageScreen>
 
     BoxLayout:
+        #md_bg_color: 1, 1, 1, 0.4
         orientation:'vertical'
-        pos_hint: {"x": 0.5, "y": 0.5}
-        ScatterImage:
-            size_hint: None,None
-            Image:
-                #size: self.get_norm_image_size()
-                texture_size: 5,0
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+
+            ScatterImage:
+                size: sp(1000), sp(1000)
                 size_hint: None,None
-                source: root.get_img_source()
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                Image:
+                    size: self.parent.size
+                    source: root.get_img_source()
             
 
     ZoomingImageScreenAppBar:
         md_bg_color: app.theme_cls.bg_light
-        left_action_items: [["subdirectory-arrow-left", root.back_to_root_screen]]
+        left_action_items: [["arrow-left-bold", root.back_to_root_screen]]
+        right_action_items: [["download", lambda x=None: print("TODO")]] # TODO:

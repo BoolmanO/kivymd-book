@@ -20,7 +20,7 @@ class ScatterImage(Scatter):
     do_rotation=False
     size_hint_y=None
     source=StringProperty()
-
+    
 
 class ZoomingImageScreen(MDScreen):
     def __init__(self, image_obj: ZoomingImage):

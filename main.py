@@ -15,7 +15,7 @@ from view.widgets.imagecontainer import *
 from kivy.core.window import Window
 #Window.size = (300, 600)
 
-
+# TODO icons, add light theme support, outlined / filled
 class BookApp(MDApp):
 
     window = Window
