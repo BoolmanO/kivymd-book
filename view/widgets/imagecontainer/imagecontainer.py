@@ -2,6 +2,7 @@ from kivymd.uix.fitimage import FitImage
 from kivy.uix.image import Image
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.scatter import Scatter
+from kivymd.uix.button import MDRaisedButton
 from kivy.graphics import Color
 
 
@@ -19,11 +20,24 @@ class ScatterImage(Scatter):
 
 class ZoomingImage(Image):
     dialog = None
+
+    def close_dialog(self, *args):
+        print(args)
+        if self.dialog:
+            self.dialog.dismiss(force=True)
+
     def show_dialog(self):
         if not self.dialog:
             self.dialog = MDDialog(
                 type="custom",
                 size=self.texture_size,
+                auto_dismiss=False,
+                buttons=[
+                    MDRaisedButton(
+                        text="Закрыть",
+                        on_release=self.close_dialog
+                        ),
+                    ],
                 content_cls=ScatterImage(
                     FitImage(
                             size=(500, 500),#list(map(lambda x: x/1.3, self.size)), 
