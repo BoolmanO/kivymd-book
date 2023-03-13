@@ -1,51 +1,49 @@
-from kivymd.uix.fitimage import FitImage
+from __future__ import annotations
+
+import os
+
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.toolbar import MDTopAppBar
+from kivymd.app import MDApp
 from kivy.uix.image import Image
-from kivymd.uix.dialog import MDDialog
-from kivy.uix.scatter import Scatter
-from kivymd.uix.button import MDRaisedButton
-from kivy.graphics import Color
+from kivy.properties import StringProperty
+
+from py_screens import BaseScreen
 
 
-class ScatterImage(Scatter):
-    def __init__(self,  img_obj: Image):
+class ZoomingImageScreen(MDScreen):
+    def __init__(self, image_obj: ZoomingImage):
         super().__init__()
-        self.size_hint_y = None
-        self.size = img_obj.size
-        #self.pos_hint = {"center_x":0.5, "center_y": 0.5}
-        self.do_rotation = False
-        #self.do_translation = False
-        self.add_widget(img_obj)
-        # scale max and scale min TODO:
-        
+        self.image_obj = image_obj
+        self.name=f"{image_obj.name}_screen"
+
+    def back_to_root_screen(self, touch):
+        self.image_obj.back_to_root_screen()
+
+
+class ZoomingImageScreenAppBar(MDTopAppBar):
+    pass
 
 class ZoomingImage(Image):
-    dialog = None
+    source=StringProperty()
+    name=os.path.split(str(source))[1]
+    root_screen=None
+    image_screen=None
+    
+    def on_touch_down(self, touch):
+        if self.image_screen is None:
+            root = touch.grab_list[0].__call__()
+            if root is None:
+                pass # DO MDialog
 
-    def close_dialog(self, *args):
+            while not isinstance(root, BaseScreen):
+                root = root.parent # !WARNING!
+            
+            self.root_screen=root
+            self.image_screen=ZoomingImageScreen(self)
+            MDApp.get_running_app().sm.add_widget(self.image_screen)
 
-        if self.dialog:
-            self.dialog.dismiss(force=True)
+        MDApp.get_running_app().sm.current=self.image_screen.name
 
-    def show_dialog(self):
-        if not self.dialog:
-            self.dialog = MDDialog(
-                type="custom",
-                size=self.texture_size,
-                auto_dismiss=False,
-                buttons=[
-                    MDRaisedButton(
-                        text="Закрыть",
-                        on_release=self.close_dialog
-                        ),
-                    ],
-                content_cls=ScatterImage(
-                    FitImage(
-                            size=self.size, 
-                            source=self.source, 
-                            size_hint_y=None,
-                            pos_hint = {"center_x":0.5, "center_y": 0.5}
-                        )
-                    )
-                )
-
-        self.dialog.open()
+    def back_to_root_screen(self):
+        MDApp.get_running_app().sm.current=self.root_screen.name
