@@ -2,7 +2,7 @@ from typing import Callable
 
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
-from kivy.uix.screenmanager import SwapTransition, NoTransition
+from kivy.uix.screenmanager import SlideTransition, NoTransition
 
 import kv_annotations
 import utils
@@ -25,8 +25,8 @@ class BookApp(MDApp):
     for key, value in metadata.items():
         formatted_metadata += f"{key} - {value}\n"
 
-    no_transition = NoTransition
-    transition = NoTransition
+    no_transition = SlideTransition
+    transition = SlideTransition
     transition_duration = 0.4
 
 
