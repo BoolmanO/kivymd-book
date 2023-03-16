@@ -60,9 +60,19 @@ class BookApp(MDApp):
             app.theme_cls.theme_style = "Light"
 
 
+    """Functions that determine the behavior of components when changing the theme"""
+    def get_active_icon_color(self):
+        return "#e1e1fc"
+    
+    def change_to_outlined(self, MDTab_instance):
+        MDTab_instance.icon=MDTab_instance.icon+"-outline"
+
+    def change_to_filled(self, MDTab_instance):
+        MDTab_instance.icon=MDTab_instance.icon.split("-")[0]
+
     """Functions for build"""
     def setup_theme(self) -> None:
-        self.theme_cls.theme_style = "Dark" # TODO: make in future more themes
+        self.theme_cls.theme_style = "Light" # TODO: make in future more themes
         self.theme_cls.primary_palette = "Indigo"
          
     def setup_sm(self) -> None:
