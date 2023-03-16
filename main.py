@@ -12,7 +12,7 @@ from view import *
 from kivy.core.window import Window
 #Window.size = (300, 600)
 
-# TODO add transitions.
+# TODO fix transitions.
 # TODO icons, add light theme support, outlined / filled
 class BookApp(MDApp):
     window = Window
@@ -25,7 +25,9 @@ class BookApp(MDApp):
     for key, value in metadata.items():
         formatted_metadata += f"{key} - {value}\n"
 
-    no_transition = SlideTransition
+    nav_transition = SlideTransition
+    nav_transition_duration = 0.4
+    
     transition = SlideTransition
     transition_duration = 0.4
 
