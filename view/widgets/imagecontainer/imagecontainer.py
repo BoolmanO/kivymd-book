@@ -63,4 +63,10 @@ class ZoomingImage(Image):
         MDApp.get_running_app().sm.current=self.image_screen.name
 
     def back_to_root_screen(self):
-        MDApp.get_running_app().sm.current=self.root_screen.name
+        app = MDApp.get_running_app()
+        app.sm.transition.direction="right"
+        app.sm.current=self.root_screen.name
+        #app.sm.transition.direction="left" class:)
+        # kivy do transition after executing my code
+        # switch_to problem
+        # TODO: pr, solve switch_to problem ASAP 
