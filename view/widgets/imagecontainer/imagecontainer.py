@@ -40,8 +40,7 @@ class ZoomingImage(Image):
     name=os.path.split(str(source))[1]
     root_screen=None
     image_screen=None
-    
-    
+
     def on_touch_down(self, touch):
         if self.image_screen is None:
             """
@@ -70,7 +69,7 @@ class ZoomingImage(Image):
         app.sm.transition.direction="right"
         app.sm.current=self.root_screen.name
 
-        def change_direction_to_left(time):
+        def change_direction_to_left(dtime: float):
             """
             It's rather sad that you have to make such a crutch, 
             but the kivy architecture is to blame for this, 
