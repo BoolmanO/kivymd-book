@@ -41,6 +41,7 @@ class ZoomingImage(Image):
     root_screen=None
     image_screen=None
     
+    
     def on_touch_down(self, touch):
         if self.image_screen is None:
             """
@@ -61,6 +62,7 @@ class ZoomingImage(Image):
             MDApp.get_running_app().sm.add_widget(self.image_screen)
 
         MDApp.get_running_app().sm.current=self.image_screen.name
+
 
     def back_to_root_screen(self):
 
