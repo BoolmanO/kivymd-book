@@ -3,7 +3,7 @@ import os
 
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.toolbar import MDTopAppBar
-from kivymd.app import MDApp
+from kivymd.app import MDApp, Clock
 
 from kivy.uix.image import Image
 from kivy.properties import StringProperty
@@ -63,10 +63,20 @@ class ZoomingImage(Image):
         MDApp.get_running_app().sm.current=self.image_screen.name
 
     def back_to_root_screen(self):
+
         app = MDApp.get_running_app()
         app.sm.transition.direction="right"
         app.sm.current=self.root_screen.name
-        #app.sm.transition.direction="left" class:)
+
+        def change_direction_to_left(time):
+            """
+            It's rather sad that you have to make such a crutch, 
+            but the kivy architecture is to blame for this, 
+            please use switch_to in your projects
+            https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html?highlight=screenmanage#kivy.uix.screenmanager.ScreenManager.switch_to
+            """
+            app.sm.transition.direction = "left"
+
+        Clock.schedule_once(change_direction_to_left, 1)
+        #app.sm.transition.direction="left"
         # kivy do transition after executing my code
-        # switch_to problem
-        # TODO: pr, solve switch_to problem ASAP 
