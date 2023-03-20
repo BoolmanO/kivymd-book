@@ -1,10 +1,10 @@
 <FirstSteps>
     name: "first_steps"
 
-    GridLayout:
-        rows:2
+    MDBoxLayout:
+        size_hint_y: 0.9
+        orientation: 'vertical'
 
-        M3TopAppBar: # TODO add back button
 
         M3ScrollView:
 
@@ -24,3 +24,6 @@
 
                 M3Label:
                     text: "text![] "*10
+
+    M3TopAppBar:
+        size_hint_y: 0.1

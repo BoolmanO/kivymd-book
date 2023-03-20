@@ -43,9 +43,15 @@ class ZoomingImage(Image):
     
     def on_touch_down(self, touch):
         if self.image_screen is None:
-            root = touch.grab_list[0].__call__()
-            if root is None:
-                pass # DO MDialog
+            """
+            This expression corrects the error when the user does not click, 
+            but swipes across the screen, lingering on the image, 
+            at the moment the on_touch_down method is called, 
+            the list of clicks has not yet been formed and we get an IndexError
+            """
+            try:
+                root = touch.grab_list[0].__call__()
+            except IndexError: return
 
             while not isinstance(root, BaseScreen):
                 root = root.parent # !WARNING!
