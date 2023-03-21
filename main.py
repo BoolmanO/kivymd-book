@@ -72,6 +72,9 @@ class BookApp(MDApp):
     def change_to_filled(self, MDTab_instance):
         MDTab_instance.icon=MDTab_instance.icon.split("-")[0]
 
+    def get_icon_color(self):
+        return self.theme_cls.primary_color # FIXME
+
     """Functions for build"""
     def setup_theme(self) -> None:
         self.theme_cls.theme_style = "Light" # TODO: make in future more themes
