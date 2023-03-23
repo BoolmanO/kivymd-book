@@ -1,7 +1,7 @@
 <ZoomingImage>
-    size: self.texture_size
+    #size: self.texture_size
     size_hint_y: None
-
+    size: app.window.size
 
 <ZoomingImageScreen>
     BoxLayout:
@@ -13,7 +13,7 @@
             anchor_y: 'center'
 
             ScatterImage:
-                size: sp(1000), sp(1000) #TODO: window size ?
+                size: app.window.size
                 size_hint: None,None
                 pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
@@ -25,7 +25,6 @@
     ZoomingImageScreenAppBar:
         md_bg_color: app.theme_cls.bg_light
         left_action_items: [["arrow-left-bold", root.back_to_root_screen]]
-        right_action_items: [["download", lambda x=None: print("TODO")]] # TODO:
         elevation: 5
         shadow_softness: 12
         pos_hint: {"top": 1}

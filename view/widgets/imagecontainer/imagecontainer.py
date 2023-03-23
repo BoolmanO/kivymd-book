@@ -20,6 +20,8 @@ class ScatterImage(Scatter):
     do_rotation=False
     size_hint_y=None
     source=StringProperty()
+    scale_max = 7.5
+    scale_min = 0.75
     
 
 class ZoomingImageScreen(MDScreen):

@@ -10,7 +10,7 @@ from py_screens import *
 from view import *
 
 from kivy.core.window import Window
-#Window.size = (300, 600)
+Window.size = (300, 600)
 
 # TODO fix transitions.
 # TODO icons, add light theme support, outlined / filled

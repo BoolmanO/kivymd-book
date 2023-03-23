@@ -9,6 +9,7 @@ class BaseListItemWithSwitch(BaseListItem):
 class RightSwitchContainer(IRightBodyTouch, MDSwitch):
     pass
 
+
 class OneLineItemWithSwitch(OneLineRightIconListItem, BaseListItemWithSwitch):
     pass
 
