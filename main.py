@@ -1,6 +1,6 @@
 from typing import Callable
 
-from kivymd.app import MDApp
+from kivymd.app import MDApp, Clock
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SlideTransition, NoTransition
 
@@ -49,18 +49,42 @@ class BookApp(MDApp):
     def path_to(self, *args, ext: utils.FileExtension):
         return utils.path_to(*args, ext=ext)
 
+
     def func_wrap(self, func: Callable, *args, **kwargs):
         kv_annotations.func_wrap(func, *args, **kwargs)
 
+
+    def change_transition_direction_to_left(self):
+        """
+        Change ScreenManager.transition.direction to left for app.transition_duration + 0.1 seconds.
+        """
+
+        """
+        It's rather sad that you have to make such a crutch, 
+        but the kivy architecture is to blame for this, 
+        please use switch_to in your projects
+        https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html?highlight=screenmanage#kivy.uix.screenmanager.ScreenManager.switch_to
+        """
+
+        self.sm.transition.direction = "right"
+
+        def change(dtime: float):
+            self.sm.transition.direction = "left"
+
+        Clock.schedule_once(change, self.transition_duration+0.1)
+
+
     def switch_to_main(self, icon):
+        self.change_transition_direction_to_left()
         self.sm.current="main_screen"
+
 
     def change_theme(app: MDApp, mode: bool):
         if mode:
             app.theme_cls.theme_style = "Dark"
         else:
             app.theme_cls.theme_style = "Light"
-
+        
 
     """Functions that determine the behavior of components when changing the theme"""
     def get_active_icon_color(self):
