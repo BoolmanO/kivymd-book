@@ -2,7 +2,7 @@ from typing import Callable
 
 from kivymd.app import MDApp, Clock
 from kivy.uix.screenmanager import ScreenManager
-from kivy.uix.screenmanager import SlideTransition, NoTransition
+from kivy.uix.screenmanager import SlideTransition, NoTransition, SwapTransition
 
 import kv_annotations
 import utils
@@ -12,8 +12,7 @@ from view import *
 from kivy.core.window import Window
 #Window.size = (300, 600)
 
-# TODO fix transitions.
-# TODO icons, add light theme support, outlined / filled
+
 class BookApp(MDApp):
     window = Window
 
@@ -28,7 +27,7 @@ class BookApp(MDApp):
     nav_transition = SlideTransition
     nav_transition_duration = 0.4
     
-    transition = SlideTransition
+    transition = SwapTransition
     transition_duration = 0.4
 
 

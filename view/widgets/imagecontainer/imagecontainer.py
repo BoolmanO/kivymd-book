@@ -39,12 +39,27 @@ class ZoomingImageScreen(MDScreen):
 
 class ZoomingImage(Image):
     source=StringProperty()
-    name=os.path.split(str(source))[1]
+    name=source
     root_screen=None
     image_screen=None
 
     def on_touch_down(self, touch):
+        """Open new screen with image on click"""
+
+        # I LITERALLY FORKED THIS CODE FROM kivymd.uix.button.button.py BaseButton on_touch_down (i mean if-elif tree)
+        # Explanation of this code for beginners: when you click on the widget, 
+        # the on_touch_down event literally fires for all instances of the class
+        if touch.is_mouse_scrolling:
+            return False
+        elif not self.collide_point(touch.x, touch.y):
+            return False
+        elif self in touch.ud:
+            return False
+        elif self.disabled:
+            return False
+
         if self.image_screen is None:
+
             """
             This expression corrects the error when the user does not click, 
             but swipes across the screen, lingering on the image, 
