@@ -3,13 +3,13 @@ from typing import Callable
 from kivymd.app import MDApp, Clock
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import SlideTransition, NoTransition, SwapTransition
+from kivy.core.window import Window
 
 import kv_annotations
 import utils
-from py_screens import *
+from py_screens import all_screens
 from view import *
 
-from kivy.core.window import Window
 #Window.size = (300, 600)
 
 
@@ -97,6 +97,7 @@ class BookApp(MDApp):
 
     def get_icon_color(self):
         return self.theme_cls.primary_color # FIXME
+
 
     """Functions for build"""
     def setup_theme(self) -> None:
