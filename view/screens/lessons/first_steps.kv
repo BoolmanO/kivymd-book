@@ -2,9 +2,9 @@
     name: "first_steps"
 
     MDBoxLayout:
+        height: root.height - toolbar.height
+        size_hint_y: None
         orientation: 'vertical'
-        size_hint_y: 0.9
-
 
         M3ScrollView:
 
@@ -17,12 +17,16 @@
 
                 ZoomingImage:
                     source: app.path_to("view", "images", "random", ext=".jpg")
-                    size: self.texture_size
-                    padding: 0, 0
-                    size_hint_y: None #!REQUIRED
-                    
 
+                ZoomingImage:
+                    source: app.path_to("view", "images", "default", ext=".jpg")
+
+                ZoomingImage:
+                    source: app.path_to("view", "images", "template", ext=".png")
+                    
                 M3Label:
                     text: "text![] "*10
 
     M3TopAppBar:
+        id: toolbar
+        #size_hint_y: None

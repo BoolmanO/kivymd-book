@@ -3,7 +3,7 @@ import os
 
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.toolbar import MDTopAppBar
-from kivymd.app import MDApp
+from kivymd.app import MDApp, Clock
 
 from kivy.uix.image import Image
 from kivy.properties import StringProperty
@@ -20,6 +20,8 @@ class ScatterImage(Scatter):
     do_rotation=False
     size_hint_y=None
     source=StringProperty()
+    scale_max = 7.5
+    scale_min = 0.75
     
 
 class ZoomingImageScreen(MDScreen):
@@ -37,12 +39,27 @@ class ZoomingImageScreen(MDScreen):
 
 class ZoomingImage(Image):
     source=StringProperty()
-    name=os.path.split(str(source))[1]
+    name=source
     root_screen=None
     image_screen=None
-    
+
     def on_touch_down(self, touch):
+        """Open new screen with image on click"""
+
+        # I LITERALLY FORKED THIS CODE FROM kivymd.uix.button.button.py BaseButton on_touch_down (i mean if-elif tree)
+        # Explanation of this code for beginners: when you click on the widget, 
+        # the on_touch_down event literally fires for all instances of the class
+        if touch.is_mouse_scrolling:
+            return False
+        elif not self.collide_point(touch.x, touch.y):
+            return False
+        elif self in touch.ud:
+            return False
+        elif self.disabled:
+            return False
+
         if self.image_screen is None:
+
             """
             This expression corrects the error when the user does not click, 
             but swipes across the screen, lingering on the image, 
@@ -62,5 +79,8 @@ class ZoomingImage(Image):
 
         MDApp.get_running_app().sm.current=self.image_screen.name
 
+
     def back_to_root_screen(self):
-        MDApp.get_running_app().sm.current=self.root_screen.name
+        app = MDApp.get_running_app()
+        app.sm.current=self.root_screen.name
+        app.change_transition_direction_to_left()

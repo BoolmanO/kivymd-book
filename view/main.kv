@@ -5,22 +5,26 @@
     MDBottomNavigation:
         id: nav
         #panel_color: app.theme_cls.primary_color
-        #text_color_active: app.get_active_icon_color()
+        text_color_active: app.get_active_icon_color()
         #text_color_normal: app.get_inactive_icon_color()
-        transition: app.no_transition
-        #selected_color_background: 0, 0, 0, 0 # FIXME define colors for light theme
+        transition_duration: app.nav_transition_duration
+        transition: app.nav_transition
+        selected_color_background: app.theme_cls.primary_dark # FIXME define colors for light theme
         use_text: False
         radius: sp(12), sp(12), 0, 0
 
-        MDBottomNavigationItem:
-            name: "screen1"
+
+        MDBottomNavigationItem: # TODO create base class
+            name: 'menu'
             icon: 'book'
-            
+            on_tab_press: app.change_to_filled(*args)
+            on_leave: app.change_to_outlined(*args)
             LessonMenu:
 
 
         MDBottomNavigationItem:
-            icon: 'cog'
-            name: "screen3"
-
+            icon: 'cog-outline'
+            name: 'settings'
+            on_tab_press: app.change_to_filled(*args)
+            on_leave: app.change_to_outlined(*args)
             SettingsScreen:

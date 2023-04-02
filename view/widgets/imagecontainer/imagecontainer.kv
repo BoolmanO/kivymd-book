@@ -1,7 +1,10 @@
-<ZoomingImageScreen>
+<ZoomingImage>
+    size_hint_y: None
+    size: app.window.size
 
+<ZoomingImageScreen>
     BoxLayout:
-        #md_bg_color: 1, 1, 1, 0.4
+        size_hint_y: 0.9
         orientation:'vertical'
 
         AnchorLayout:
@@ -9,8 +12,8 @@
             anchor_y: 'center'
 
             ScatterImage:
-                size: sp(1000), sp(1000)
-                size_hint: None,None
+                size: app.window.size
+                size_hint: None, None
                 pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
                 Image:
@@ -21,6 +24,7 @@
     ZoomingImageScreenAppBar:
         md_bg_color: app.theme_cls.bg_light
         left_action_items: [["arrow-left-bold", root.back_to_root_screen]]
-        right_action_items: [["download", lambda x=None: print("TODO")]] # TODO:
         elevation: 5
         shadow_softness: 12
+        pos_hint: {"top": 1}
+        specific_text_color: app.get_icon_color()

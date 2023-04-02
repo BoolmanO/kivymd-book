@@ -16,14 +16,13 @@
 
 <M3TopAppBar@MDTopAppBar>
     md_bg_color: app.theme_cls.bg_light
-    #size: (app.window.size[0], app.window.size[1] / 10+sp(20))
-    anchor_title: "left"
-    #title: "KivyMDbook"
+    size_hint_y: None
     elevation: 5
     shadow_softness: 12
     pos_hint: {"top": 1}
     left_action_items: [['arrow-left-bold', app.switch_to_main]] # TODO
-
+    specific_text_color: app.get_icon_color()
+    set_bars_color: True
 
 <M3RecycleView@MDRecycleView>
     size_hint_y: 1
